@@ -1,3 +1,4 @@
+import logging
 from homeassistant.components.button import ButtonEntity
 from homeassistant.components.bluetooth import async_ble_device_from_address
 from homeassistant.config_entries import ConfigEntry
