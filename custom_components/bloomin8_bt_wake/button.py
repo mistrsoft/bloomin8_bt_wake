@@ -65,14 +65,4 @@ class Bloomin8WakeButton(ButtonEntity):
         except Exception as e:
             _LOGGER.error("Failed to send wake signal: %s", e)
 
-            async with BleakClient(device) as client:
-                if not client.is_connected:
-                     _LOGGER.error("Failed to connect to %s", self._mac)
-                     return
 
-                # Write the confirmed magic byte
-                await client.write_gatt_char(BLE_CHAR_UUID, BLE_WAKE_PAYLOAD, response=True)
-                _LOGGER.info("Wake signal sent successfully!")
-                
-        except Exception as e:
-            _LOGGER.error("Failed to send wake signal: %s", e)
