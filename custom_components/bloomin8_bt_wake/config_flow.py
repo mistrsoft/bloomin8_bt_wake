@@ -14,7 +14,7 @@ from .const import DOMAIN, DEFAULT_NAME
 
 _LOGGER = logging.getLogger(__name__)
 
-class Bloomin8BtWakeConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+class Bloomin8BtWakeConfigFlow(config_entries.ConfigFlow):
     """Handle a config flow for Bloomin8 Bluetooth Wake."""
 
     VERSION = 1
