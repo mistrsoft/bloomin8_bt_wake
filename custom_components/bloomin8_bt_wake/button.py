@@ -12,7 +12,8 @@ from .const import (
     DOMAIN,
     BLE_SERVICE_UUID,
     BLE_CHAR_UUID,
-    BLE_WAKE_PAYLOAD,
+    BLE_WAKE_PAYLOAD1,
+    BLE_WAKE_PAYLOAD2,
     CONF_MAC_ADDRESS,
 )
 
@@ -58,9 +59,11 @@ class Bloomin8WakeButton(ButtonEntity):
                      _LOGGER.error("Failed to connect to %s", self._mac)
                      return
 
-                # Write the confirmed magic byte
-                await client.write_gatt_char(BLE_CHAR_UUID, BLE_WAKE_PAYLOAD, response=True)
-                _LOGGER.info("Wake signal sent successfully!")
+                # Write the confirmed magic bytes
+                await client.write_gatt_char(BLE_CHAR_UUID, BLE_WAKE_PAYLOAD1, response=True)
+                _LOGGER.info("Wake signal 1 sent successfully!")
+                await client.write_gatt_char(BLE_CHAR_UUID, BLE_WAKE_PAYLOAD2, response=True)
+                _LOGGER.info("Wake signal 2 sent successfully!")
                 
         except Exception as e:
             _LOGGER.error("Failed to send wake signal: %s", e)
